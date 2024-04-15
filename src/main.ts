@@ -1,6 +1,6 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './presentation/modules/home/app.component';
-import { appConfig } from './presentation/core/app.config';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './presentation/modules/home/app.module';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));

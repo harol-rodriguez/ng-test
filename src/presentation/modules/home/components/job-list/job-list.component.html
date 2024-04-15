@@ -1,0 +1,31 @@
+<div class="job-list-component">
+  <div *ngIf="jobs$ | async as jobs" class="job-list">
+
+    <div class="job-list-item" *ngFor="let job of jobs.data">
+      <p class="job-list-item__title">
+        {{ job.title }}
+      </p>
+      <div class="job-list-item__description">
+        <div class="job-list-item__description-item">
+          <label>location</label>
+          <p>{{ job.location }}</p>
+        </div>
+
+        <div class="job-list-item__description-item">
+          <label>date</label>
+          <p>{{ job.postDate }}</p>
+        </div>
+
+        <div class="job-list-item__description-item">
+          <label>type</label>
+          <p>{{ job.type }}</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!(jobs$ | async)">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

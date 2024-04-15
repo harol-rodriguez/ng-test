@@ -1,7 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadJobs, loadJobsSuccess, loadJobsFailure } from './job-search.actions';
-
-export const jobSearchFeatureKey = 'jobSearch';
+import { loadJobsSuccess, loadJobsFailure } from './job-search.actions';
 
 export interface State {
   data: any;
@@ -13,14 +11,11 @@ export interface JobSearchState {
   jobSearch: State;
 }
 
-export const initialState: State = {
-  data: null,
-  error: null
-};
+export const initialState = { data: null, error: null };
 
-export const reducer = createReducer(
+export const jobReducer = createReducer(
   initialState,
-  on(loadJobsSuccess, (state, action) => ({ ...state, data: action.data })),
-  on(loadJobsFailure, (state, action) => ({ ...state, error: action.error }))
+  on(loadJobsSuccess, (state, { data }) => ({ ...state, data })),
+  on(loadJobsFailure, (state, { error }) => ({ ...state, error }))
 );
 

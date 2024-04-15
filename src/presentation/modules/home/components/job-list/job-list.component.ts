@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { loadJobs } from '../../../../state/job-search/job-search.actions';
 import { AppState } from '../../../../state/app.state';
 
 @Component({
   selector: 'app-job-list',
-  standalone: true,
-  template: `
-    <div *ngFor="let job of jobs$ | async">
-      {{ job.title }}
-    </div>
-  `,
+  templateUrl: './job-list.component.html',
+  styleUrls: ['./job-list.component.scss']
 })
 export class JobListComponent implements OnInit {
-  jobs$ = this.store.select((state: AppState) => state.jobSearch.data);
+  jobs$: Observable<any> | undefined;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.store.dispatch(loadJobs({ keywords: 'golang', locationId: '92000000', datePosted: 'anyTime', sort: 'mostRelevant' }));
+    this.store.dispatch(loadJobs());
+    this.jobs$ = this.store.select(state => state.jobSearch.data);
+    this.jobs$.subscribe(jobs => {
+      console.log(jobs?.data);
+    });
   }
 }

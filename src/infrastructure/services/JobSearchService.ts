@@ -1,11 +1,13 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { IJobSearchService } from '../../domain/services/IJobSearchService';
+import { Inject, Injectable } from '@angular/core';
 
+@Injectable()
 export class JobSearchService implements IJobSearchService {
-  private apiKey: string;
-  private apiHost: string;
-
-  constructor(apiKey: string, apiHost: string) {
+  constructor(
+    @Inject('API_KEY') private apiKey: string,
+    @Inject('API_HOST') private apiHost: string
+  ) {
     this.apiKey = apiKey;
     this.apiHost = apiHost;
   }
