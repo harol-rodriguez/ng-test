@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { loadJobs } from '../../../../state/job-search/job-search.actions';
+import { deleteJob, loadJobs } from '../../../../state/job-search/job-search.actions';
 import { AppState } from '../../../../state/app.state';
 
 @Component({
@@ -20,5 +20,9 @@ export class JobListComponent implements OnInit {
     this.jobs$.subscribe(jobs => {
       console.log(jobs?.data);
     });
+  }
+
+  deleteJob(slug: string) {
+    this.store.dispatch(deleteJob({ slug }));
   }
 }

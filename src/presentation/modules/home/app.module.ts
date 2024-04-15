@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { InputAreaComponent } from './components/input-area/input-area.component';
@@ -29,7 +31,9 @@ import { JobListComponent } from './components/job-list/job-list.component';
     HttpClientModule,
     StoreModule.forRoot({ jobSearch: jobReducer }),
     EffectsModule.forRoot([JobEffects]),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     SearchJobsUseCase,

@@ -19,12 +19,23 @@
   background-color: #f5f5f5;
 
   &__title {
-    font-weight: bold;
-    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .mat-icon {
+      margin: 0;
+    }
   }
 }
 
 .job-list-item__description-item {
-  font-weight: 500;
-  font-size: small;
+  label {
+    font-weight: 500;
+    font-size: small;
+  }
 }

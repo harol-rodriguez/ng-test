@@ -2,9 +2,16 @@
   <div *ngIf="jobs$ | async as jobs" class="job-list">
 
     <div class="job-list-item" *ngFor="let job of jobs.data">
-      <p class="job-list-item__title">
-        {{ job.title }}
-      </p>
+      <div class="job-list-item__title">
+        <p>
+          {{ job.title }}
+        </p>
+
+        <button mat-raised-button color="warn" (click)="deleteJob(job.slug)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
       <div class="job-list-item__description">
         <div class="job-list-item__description-item">
           <label>location</label>
@@ -13,12 +20,14 @@
 
         <div class="job-list-item__description-item">
           <label>date</label>
-          <p>{{ job.postDate }}</p>
+          <!-- antigua llamada al api -->
+          <!-- <p>{{ job.postDate }}</p> -->
+          <p>{{ job.created_at | date:'dd/MM/yyyy' }}</p>
         </div>
 
         <div class="job-list-item__description-item">
-          <label>type</label>
-          <p>{{ job.type }}</p>
+          <label>company_name</label>
+          <p>{{ job.company_name }}</p>
         </div>
 
       </div>
