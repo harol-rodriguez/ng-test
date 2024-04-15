@@ -1,7 +1,7 @@
 <div class="job-list-component">
   <div *ngIf="jobs$ | async as jobs" class="job-list">
 
-    <div class="job-list-item" *ngFor="let job of jobs.data">
+    <div class="job-list-item" *ngFor="let job of (jobs.data.slice().reverse())">
       <div class="job-list-item__title">
         <p>
           {{ job.title }}
