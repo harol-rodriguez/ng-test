@@ -24,5 +24,6 @@ export class CreateJobComponent implements OnInit {
 
   onSubmit() {
     this.store.dispatch(createJob({ job: this.jobForm.value }));
+    this.jobForm.reset();
   }
 }
